@@ -1,6 +1,5 @@
-package com.example.todo;
+package com.example.todo.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.todo.model.NoteModel;
+import com.example.todo.R;
 
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
-        View itemView=layoutInflater.inflate(R.layout.item_list_note,parent,true);
+        View itemView=layoutInflater.inflate(R.layout.item_list_note,parent,false);
         return new NoteViewHolder(itemView);
     }
 

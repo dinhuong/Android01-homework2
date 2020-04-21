@@ -1,8 +1,10 @@
-package com.example.todo;
+package com.example.todo.databases;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.todo.model.NoteModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +42,17 @@ public class DatabaseUtils {
             String tag=cursor.getString(3);
             String time=cursor.getString(4);
 
-            NoteModel noteModel=new NoteModel(id,title,time,tag,time);
+            NoteModel noteModel=new NoteModel(id,title,content,tag,time);
             noteModels.add(noteModel);
 
             cursor.moveToNext();
         }
         return noteModels;
+    }
+    public void addNote(NoteModel note){
+        sqLiteDatabase = myDatabase.getWritableDatabase();
+        sqLiteDatabase.rawQuery("insert into "+TABLE_NAME+"values ("+
+                note.getId()+","+note.getTitle()+","+note.getContent()+","+note.getTag()+","+note.getTime()+");",
+                null);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.todo;
+package com.example.todo.model;
 
 public class NoteModel {
     int id;

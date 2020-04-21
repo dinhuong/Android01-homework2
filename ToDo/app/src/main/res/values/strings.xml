@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ToDo</string>
+    <string-array name="tag_array">
+        <item>DEFAULT</item>
+        <item>HOME</item>
+        <item>FAMILY</item>
+        <item>WORK</item>
+    </string-array>
 </resources>
