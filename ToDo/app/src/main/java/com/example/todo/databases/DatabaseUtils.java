@@ -1,5 +1,6 @@
 package com.example.todo.databases;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,6 +20,13 @@ public class DatabaseUtils {
 
     public DatabaseUtils(Context context) {
         myDatabase = new MyDatabase(context);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS todo;");
+        sqLiteDatabase.execSQL("create table todo (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "title TEXT NOT NULL,content text," +
+                "tag text not null," +
+                "time datetime not null)"
+        );
     }
 
     public static DatabaseUtils getInstance(Context context) {
@@ -51,8 +59,7 @@ public class DatabaseUtils {
     }
     public void addNote(NoteModel note){
         sqLiteDatabase = myDatabase.getWritableDatabase();
-        sqLiteDatabase.rawQuery("insert into "+TABLE_NAME+"values ("+
-                note.getId()+","+note.getTitle()+","+note.getContent()+","+note.getTag()+","+note.getTime()+");",
-                null);
+        ContentValues values;
+
     }
 }

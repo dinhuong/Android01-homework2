@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.todo.adapters.NoteAdapter;
@@ -36,14 +37,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this, CreateNoteActivity.class);
                 startActivity(intent);
-                loadData();
             }
         });
 
         setUI();
     }
 
-    private void loadData() {
+    @Override
+    protected void onStart() {
+
+        super.onStart();
         noteAdapter.notifyDataSetChanged();
     }
 
@@ -53,5 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         noteAdapter=new NoteAdapter(noteModelList);
         recyclerView.setAdapter(noteAdapter);
+        System.out.println();
     }
 }
